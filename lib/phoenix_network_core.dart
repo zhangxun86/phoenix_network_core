@@ -2,6 +2,7 @@ library phoenix_network_core;
 
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+<<<<<<< HEAD
 import 'src/core/loading_manager.dart'; // 确保 引入 LoadingManager
 import 'src/http/http_util.dart';
 
@@ -22,7 +23,11 @@ class PhoenixFramework {
     if (!coreLocator.isRegistered<LoadingManager>()) {
       coreLocator.registerSingleton<LoadingManager>(LoadingManager());
     }
+<<<<<<< HEAD
 
+=======
+
+>>>>>>> 68fd2433d9489ae6a2b1e1528173c3edef28fca7
     coreLocator.registerSingleton<String>(baseUrl, instanceName: 'baseUrl');
     coreLocator.registerSingleton<String>(apiVersion, instanceName: 'apiVersion');
 
