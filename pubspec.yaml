@@ -1,27 +1,26 @@
 name: phoenix_network_core
-description: The core data layer framework for Phoenix Architecture, providing robust networking, caching, and data persistence patterns.
+description: The core data layer framework for Phoenix Architecture.
 version: 0.0.1
-homepage: https://github.com/your_username/phoenix_network_core
+homepage: https://github.com/zhangxun86/phoenix_network_core # your homepage
 
 environment:
-  sdk: '>=3.0.0 <4.0.0'
-  flutter: ">=1.17.0"
+  sdk: '>=3.3.0 <4.0.0'
+  flutter: ">=3.19.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
-  dio: ^5.3.3
-  get_it: ^7.6.4
-  provider: ^6.0.5
-  json_annotation: ^4.8.1
+  dio: ^5.5.0+1
+  get_it: ^7.7.0
+  provider: ^6.1.2
   pretty_dio_logger: ^1.3.1
-  # 替换下面这行
-  # dio_http_cache: ^0.3.0  <- 删除这行
-  dio_cache_interceptor: ^3.4.4 # <- 添加这行，这是 Dio v5 兼容的缓存库
-  dio_smart_retry: ^5.0.0
+  dio_cache_interceptor: ^3.5.1
+  dio_smart_retry: ^6.0.0
+  # 注意：我们在这里移除了 json_annotation，因为它只在应用层需要
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.2
+
