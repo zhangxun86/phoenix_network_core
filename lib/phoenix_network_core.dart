@@ -18,7 +18,8 @@ class PhoenixFramework {
     String apiVersion = 'v1',
     List<Interceptor> customInterceptors = const [],
   }) async {
-    // 关键修复：在这里注册 LoadingManager
+    // --- 关键修复：在这里注册 LoadingManager ---
+    // 检查是否已经注册，避免重复注册
     if (!coreLocator.isRegistered<LoadingManager>()) {
       coreLocator.registerSingleton<LoadingManager>(LoadingManager());
     }
