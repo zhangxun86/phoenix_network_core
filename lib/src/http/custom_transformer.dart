@@ -1,12 +1,21 @@
+// phoenix_network_core/lib/src/http/custom_transformer.dart
+
 import 'package:dio/dio.dart';
 
-/// 一个通用的转换器，应用可以根据自己的 BaseResponse 结构来决定是否使用或重写
-/// 在这个通用包中，我们保持其简单性，让应用层有更多灵活性
 class PhoenixBaseTransformer extends BackgroundTransformer {
   @override
   Future transformResponse(
       RequestOptions options, ResponseBody response) async {
-    // 默认行为是使用 Dio 的默认 JSON 解析器
-    return super.transformResponse(options, response);
+    final json = await super.transformResponse(options, response);
+    
+    // 关键修复：如果响应是一个Map并且包含 'data' 键，
+    // 我们就假设业务数据在 'data' 里面，并只返回它。
+    // 这让 Retrofit 可以直接用干净的业务数据进行解析。
+    if (json is Map<String, dynamic> && json.containsKey('data')) {
+      return json['data'];
+    }
+    
+    // 否则，直接返回整个JSON体（比如登录接口的响应）。
+    return json;
   }
 }
